@@ -1,0 +1,29 @@
+\begin{table}[ht]
+    \centering
+    \caption{Numerical results for different values of $\lambda$.}
+    \label{tab:denoising_results}
+    \small
+    \begin{tabular}{llrrrr}
+        \hline
+        $\lambda$ & Method & $f(x)$ & Iterations & Time (s) & MSE \\
+        \hline
+        0.05 & CG & 4.315e+07 & 13 & 2.2822 & 125.5229 \\
+         & Direct & 4.315e+07 &  & 4.8806 & 125.5229 \\
+        \hline
+        0.10 & CG & 6.794e+07 & 17 & 2.7474 & 90.4171 \\
+         & Direct & 6.794e+07 &  & 4.8447 & 90.4171 \\
+        \hline
+        0.25 & CG & 1.075e+08 & 26 & 3.9626 & 62.7043 \\
+         & Direct & 1.075e+08 &  & 4.4704 & 62.7043 \\
+        \hline
+        0.50 & CG & 1.387e+08 & 36 & 5.1845 & 62.2158 \\
+         & Direct & 1.387e+08 &  & 3.8929 & 62.2158 \\
+        \hline
+        1.00 & CG & 1.694e+08 & 50 & 6.7266 & 76.6761 \\
+         & Direct & 1.694e+08 &  & 3.5359 & 76.6761 \\
+        \hline
+        2.00 & CG & 2.002e+08 & 71 & 8.9640 & 101.8526 \\
+         & Direct & 2.002e+08 &  & 2.7588 & 101.8526 \\
+        \hline
+    \end{tabular}
+\end{table}

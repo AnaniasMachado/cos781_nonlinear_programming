@@ -1,4 +1,3 @@
-
 using LinearAlgebra
 using Printf
 using Random
@@ -81,7 +80,16 @@ function run_method(name, method, grad, hess; tol=1e-8, max_iter=1000)
         )
     catch e
         println(name, " failed: ", e)
-        return nothing
+
+        return (
+            name=name,
+            x=nothing,
+            fx=NaN,
+            iterations=missing,
+            time=NaN,
+            grad_norm=NaN,
+            status="Failed: $(sprint(showerror, e))"
+        )
     end
 end
 
@@ -116,13 +124,47 @@ function run_comparison(name, f, grad, hess, line_search, x0; quadratic=false, t
 
     for (method_name, method) in methods
         result = run_method(method_name, method, grad, hess; tol=tol, max_iter=max_iter)
-
-        if result !== nothing
-            push!(results, result)
-        end
+        push!(results, result)
     end
 
     return results
+end
+
+function csv_field(value)
+    s = string(value)
+    return "\"" * replace(s, "\"" => "\"\"") * "\""
+end
+
+function save_results_csv(filename, tests, all_results)
+    open(filename, "w") do io
+        println(io, "Function,Method,Initial x1,Initial x2,Solution x1,Solution x2,Objective Value,Iterations,Time (s),Gradient Norm,Status")
+
+        for (name, f, grad, hess, line_search, x0, quadratic) in tests
+            for result in all_results[name]
+                x1 = result.x === nothing ? "" : result.x[1]
+                x2 = result.x === nothing ? "" : result.x[2]
+                iterations = ismissing(result.iterations) ? "" : result.iterations
+
+                values = (
+                    name,
+                    result.name,
+                    x0[1],
+                    x0[2],
+                    x1,
+                    x2,
+                    result.fx,
+                    iterations,
+                    result.time,
+                    result.grad_norm,
+                    result.status
+                )
+
+                println(io, join(csv_field.(values), ","))
+            end
+        end
+    end
+
+    println("\nResults saved to: ", abspath(filename))
 end
 
 Random.seed!(1)
@@ -153,3 +195,5 @@ for (name, f, grad, hess, line_search, x0, quadratic) in tests
         max_iter=max_iter
     )
 end
+
+save_results_csv("hw_unconstrained_minization/results.csv", tests, all_results)

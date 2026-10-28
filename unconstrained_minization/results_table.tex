@@ -1,0 +1,54 @@
+\begin{table}[ht]
+    \centering
+    \caption{Numerical results for the benchmark functions.}
+    \label{tab:numerical-results}
+    \small
+    \begin{tabular}{llrrrl}
+        \hline
+        Function & Method & $f(x_k)$ & Iterations & Time (s) & Status \\
+        \hline
+        Sphere & GD & 0.000e+00 & 1 & 6.100e-06 & Strict min \\
+         & BFGS & 0.000e+00 & 1 & 2.210e-05 & Strict min \\
+         & RN & 0.000e+00 & 1 & 1.110e-05 & Strict min \\
+         & PN & 0.000e+00 & 1 & 6.500e-06 & Strict min \\
+         & CG & 0.000e+00 & 1 & 5.000e-06 & Strict min \\
+        \hline
+        Matyas & GD & 5.902e-12 & 127 & 3.740e-05 & Strict min \\
+         & BFGS & 3.155e-32 & 2 & 2.100e-05 & Strict min \\
+         & RN & 4.437e-33 & 1 & 1.820e-05 & Strict min \\
+         & PN & 4.437e-33 & 1 & 1.300e-05 & Strict min \\
+         & CG & 5.744e-32 & 2 & 7.200e-06 & Strict min \\
+        \hline
+        Booth & GD & 4.570e-14 & 13 & 1.490e-05 & Strict min \\
+         & BFGS & 0.000e+00 & 2 & 1.930e-05 & Strict min \\
+         & RN & 0.000e+00 & 1 & 1.530e-05 & Strict min \\
+         & PN & 0.000e+00 & 1 & 8.800e-06 & Strict min \\
+         & CG & 4.812e-29 & 2 & 7.200e-06 & Strict min \\
+        \hline
+        Himmelblau & GD & 9.417e-15 & 21 & 1.930e-05 & Strict min \\
+         & BFGS & 6.688e-16 & 9 & 3.320e-05 & Strict min \\
+         & RN & 1.262e-29 & 8 & 2.210e-05 & Strict min \\
+         & PN & 1.783e+02 & 5 & 1.150e-05 & Not min \\
+        \hline
+        Rastrigin & GD & 9.950e-01 & 30 & 4.500e-05 & Strict min \\
+         & BFGS & 9.950e-01 & 11 & 3.530e-05 & Strict min \\
+         & RN & 9.950e-01 & 8 & 2.880e-05 & Strict min \\
+         & PN & 2.025e+01 & 5 & 1.140e-05 & Not min \\
+        \hline
+        Styblinski-Tang & GD & -6.420e+01 & 10 & 1.460e-05 & Strict min \\
+         & BFGS & -7.833e+01 & 11 & 3.200e-05 & Strict min \\
+         & RN & -5.006e+01 & 13 & 3.070e-05 & Strict min \\
+         & PN & 3.912e-01 & 3 & 7.300e-06 & Not min \\
+        \hline
+        Rosenbrock & GD & 1.134e-09 & 10000 & 8.339e-03 & Max iter \\
+         & BFGS & 1.557e-17 & 22 & 4.310e-05 & Strict min \\
+         & RN & 4.329e-19 & 12 & 2.500e-05 & Strict min \\
+         & PN & 1.245e-30 & 7 & 1.270e-05 & Strict min \\
+        \hline
+        Beale & GD & 7.571e-13 & 842 & 3.572e-04 & Strict min \\
+         & BFGS & 1.463e-16 & 15 & 3.390e-05 & Strict min \\
+         & RN & 5.781e-16 & 7 & 2.600e-05 & Strict min \\
+         & PN & 1.420e+01 & 9 & 1.660e-05 & Not min \\
+        \hline
+    \end{tabular}
+\end{table}
